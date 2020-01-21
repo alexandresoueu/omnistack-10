@@ -1,5 +1,4 @@
-import React from 'react';
-import Header from './Header'
+import React, { useState } from 'react'
 
 /** 
  * 
@@ -9,11 +8,16 @@ import Header from './Header'
 */
 
 function App() {
+  let [counter, setCounter] = useState(0)
+
+  function incrementCounter() {
+    setCounter(counter++)
+  }
+
   return (
     <>
-      <Header title="LET'S GO" />
-      <Header title="HEY HO" />
-      <Header title="PET BULLET" />
+      <h1>Counter: { counter }</h1>
+      <button onClick={ incrementCounter }>Increment</button>
     </>
   )
 }
