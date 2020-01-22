@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import api from './services/api'
 import './global.css'
 import './App.css'
 import './Sidebar.css'
 import './Main.css'
+
+import DevItem from './components/DevItem/index'
+import DevForm from './components/DevForm/index'
 /** 
  * Component = Block isolate of HTML, CSS and JS, which don`t interfer of restant of aplication
  * State = informations which a component Dad pass to component Son
@@ -10,82 +14,40 @@ import './Main.css'
 */
 
 function App() {
+  const [developers, setDevelopers] = useState([])
+
+  
+  
+
+  useEffect(() => {
+    async function loadDevelopers() {
+      const response = await api.get('/listdevelopers')
+
+      setDevelopers(response.data)
+    }
+    loadDevelopers()
+  }, [])
+
+  async function handleAddDev(data) {
+
+    const response = await api.post('/developers', data)
+
+    setDevelopers([...developers, response.data])
+  }
 
   return (
     <div id="app">
       <aside>
         <strong>Cadastrar</strong>
-        <form>
-          <div className="input-block">
-            <label htmlFor="github_username">Usuario do github</label>
-            <input name="github_username" id="github_username" required />
-          </div>
-          <div className="input-block">
-            <label htmlFor="techs">Tecnologias</label>
-            <input name="techs" id="techs" required />
-          </div>
-          <div className="input-group">
-            <div className="input-block">
-              <label htmlFor="latitude">Latitude</label>
-              <input name="latitude" id="latitude" required />
-            </div>
-            <div className="input-block">
-              <label htmlFor="longitude">Longitude</label>
-              <input name="longitude" id="longitude" required />
-            </div>
-          </div>
-          <button type="submit">Salvar</button>
-        </form>
+        <DevForm onSubmit={handleAddDev} />
       </aside>
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
-              <div className="user-info">
-                 <strong>Alexandre Oliveira</strong>
-                 <span>Node, React, Vue</span> 
-              </div>
-            </header>
-            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
-            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
-              <div className="user-info">
-                 <strong>Alexandre Oliveira</strong>
-                 <span>Node, React, Vue</span> 
-              </div>
-            </header>
-            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
-            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
-              <div className="user-info">
-                 <strong>Alexandre Oliveira</strong>
-                 <span>Node, React, Vue</span> 
-              </div>
-            </header>
-            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
-            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
-              <div className="user-info">
-                 <strong>Alexandre Oliveira</strong>
-                 <span>Node, React, Vue</span> 
-              </div>
-            </header>
-            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
-            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
-          </li>
+          {developers.map(dev => (
+            <DevItem key={dev._id} dev={dev} />
+          )
+          )
+          }
         </ul>
       </main>
     </div>
