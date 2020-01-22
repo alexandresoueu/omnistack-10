@@ -2,6 +2,7 @@ import React from 'react'
 import './global.css'
 import './App.css'
 import './Sidebar.css'
+import './Main.css'
 /** 
  * Component = Block isolate of HTML, CSS and JS, which don`t interfer of restant of aplication
  * State = informations which a component Dad pass to component Son
@@ -37,7 +38,55 @@ function App() {
         </form>
       </aside>
       <main>
+        <ul>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
+              <div className="user-info">
+                 <strong>Alexandre Oliveira</strong>
+                 <span>Node, React, Vue</span> 
+              </div>
+            </header>
+            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
+            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
+          </li>
 
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
+              <div className="user-info">
+                 <strong>Alexandre Oliveira</strong>
+                 <span>Node, React, Vue</span> 
+              </div>
+            </header>
+            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
+            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
+              <div className="user-info">
+                 <strong>Alexandre Oliveira</strong>
+                 <span>Node, React, Vue</span> 
+              </div>
+            </header>
+            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
+            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars3.githubusercontent.com/u/22204793?v=4" title="Alexandre Oliveira" />
+              <div className="user-info">
+                 <strong>Alexandre Oliveira</strong>
+                 <span>Node, React, Vue</span> 
+              </div>
+            </header>
+            <p>bulbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasaasawawawaeaaeawaeaeaeaaawaeaeaweaewaaweawawaaeawweawaweaweaewaeaewaweawawaweaeaewaeaweaeawaeaewaweaeaeaeawea</p>
+            <a href="https://github.com/alexandresoueu" >Acessar perfil no Github</a>
+          </li>
+        </ul>
       </main>
     </div>
   )
